@@ -1,3 +1,5 @@
+All credit goes to aofurmy and his project https://github.com/afourmy/pyTSP
+
 # Introduction
 
 The travelling salesman problem (TSP) asks the following question: "Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city and returns to the origin city ?
@@ -7,25 +9,14 @@ It provides a geographical step-by-step visualization of each of these algorithm
 
 ![pyTSP](readme/intro.gif)
 
-**You can find a <a href="http://mintoo.pythonanywhere.com/" target="_blank">demo of pyTSP here !</a> (U.S cities with a population larger than 900 000 inhabitants)**
-
 # Algorithms
 
-The following algorithms are implemented in pyTSP:
+The following algorithms are implemented:
 
-- Construction heuristics
-  - Nearest neighbor
-  - Nearest insertion
-  - Farthest insertion
-  - Cheapest insertion
-- Linear programming
-- Optimization heuristics
-  - Pairwise exchange (2-opt)
-  - Node insertion
-  - Edge insertion
-- Genetic algorithm
+- Uninformed (using Dijkstra)
+- Informed (using A\*)
 
-# Construction heuristics
+<!-- # Construction heuristics
 
 ## Nearest neighbor
 
@@ -131,7 +122,7 @@ pyTSP implements a genetic algorithm with the following properties:
 
 ![Genetic algorithm](readme/genetic_algorithm.gif)
 
-**Note**: the genetic algorithm is processed by the server, and websockets (or long-polling if the server does not support websockets) are used to update the display client-side every new generation.
+**Note**: the genetic algorithm is processed by the server, and websockets (or long-polling if the server does not support websockets) are used to update the display client-side every new generation. -->
 
 # Getting started
 
@@ -145,13 +136,13 @@ cvxopt (linear programming)
 xlrd (graph import)
 ```
 
-In order to use pyTSP, you need to:
+In order to use this version of pyTSP, you need to:
     
 - (optional) set up a [virtual environment](https://docs.python.org/3/library/venv.html) .
 
 - clone pyTSP (or download as a zip archive from github)
 ```
-git clone https://github.com/afourmy/pyTSP.git
+git clone https://github.com/monterrubio-miguel/pyTSP.git
 ```
     
 - install the requirements
@@ -160,12 +151,12 @@ cd pyTSP
 pip install -r requirements.txt
 ```
 
-- run **/flask_app.py**.
+- run **/flask_app.py**. (inside the "source" folder)
 ```
 python flask_app.py
 ```
 
-- go the http://127.0.0.1:5000/.
+- go http://127.0.0.1:5000/.
 
 # Credits 
 
