@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-  <title>TSP 2D/3D GIS visualization</title>
+  <title>Challenge2 Emilio|Miguel|Eugenio</title>
   <!-- Bootstrap -->
   <link href="{{ url_for('static', filename='bootstrap/bootstrap.min.css') }}" rel="stylesheet">
   <!-- Bootstrap slider -->
@@ -27,13 +27,11 @@
   <body>  
     <form id="aform" method="post">
       <div class="btn-group" style="z-index:500; position: absolute; left:40vw; top:10px;">  
-        {% if view == '2D' %}
-          <button type="submit" class="btn btn-primary" name="view" value="3D">3D view</button>
-        {% else %}
-          <button type="submit" class="btn btn-primary" name="view" value="2D">2D view</button>
-        {% endif %}
-  
-        <div class="btn-group">
+        
+  <!--
+    Hidden Div
+  -->
+        <div class="btn-group" style="display: none">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Tile layer
             <span class="caret"></span>
           </button>
@@ -48,32 +46,36 @@
       </div>
     </form>
     <div class="panel-group" style="z-index:500; position: absolute; top: 20px; left:20px;">
-      <iframe src="https://ghbtns.com/github-btn.html?user=afourmy&repo=pytsp&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+      
         <div class="panel panel-primary panel-transparent">
-          <div class="panel-heading">Construction heuristics</div>
+          <div class="panel-heading" style="background-color: green">Informed Search</div>
           <div class="panel-body">
             <div class="btn-group-vertical btn-block" >
-              <button type="button" class="btn btn-primary" onclick="tourConstruction('nearest_neighbor')">Nearest neighbor</button>
+              <button type="button" style="background-color: saddlebrown" class="btn btn-primary" onclick="tourConstruction('nearest_neighbor')">Algorithm1</button>
+              <!--
               <button type="button" class="btn btn-primary" onclick="tourConstruction('nearest_insertion')">Nearest insertion</button>
               <button type="button" class="btn btn-primary" onclick="tourConstruction('farthest_insertion')">Farthest insertion</button>
               <button type="button" class="btn btn-primary" onclick="tourConstruction('cheapest_insertion')">Cheapest insertion</button>
+              -->
             </div>
           </div>
         </div>
   
         <div class="panel panel-primary panel-transparent">
-          <div class="panel-heading">Optimization heuristics</div>
+          <div class="panel-heading" style="background-color: green">Uninformed Search</div>
           <div class="panel-body">  
-            <div class="btn-group-vertical btn-block" >
-              <button type="button" class="btn btn-primary" onclick="tourConstruction('pairwise_exchange')">Pairwise exchange</button>
+            <div class="btn-group-vertical btn-block">
+              <button type="button" style="background-color: saddlebrown" class="btn btn-primary" onclick="tourConstruction('pairwise_exchange')">Algorithm2</button>
+              <!--
               <button type="button" class="btn btn-primary" onclick="tourConstruction('node_insertion')">Node insertion</button>
               <button type="button" class="btn btn-primary" onclick="tourConstruction('edge_insertion')">Edge insertion</button>
+              -->
             </div>
           </div>
         </div>
   
         <div class="panel panel-primary panel-transparent">
-          <div class="panel-heading">Visualization speed</div>
+          <div class="panel-heading" style="background-color: green">Visualization speed</div>
           <div class="panel-body">    
               <input id="base_slider" data-slider-id='slider-css' type="text" data-slider-min="1" data-slider-max="1000" data-slider-step="10" data-slider-value="100"/>
           </div>
@@ -81,7 +83,7 @@
       </div>
     </div>
   
-    <div class="panel-group" style="z-index:500; position: absolute; top: 20px; right:20px;">
+    <div class="panel-group" style="z-index:500; display: none; position: absolute; top: 20px; right:20px;">
       <form id="fileform" class="form-horizontal form-label-left" enctype="multipart/form-data" method="post" >
         <div style="padding-bottom:5px;">
           <label class="btn btn-default btn-file" style="width:100%;">Import a graph
@@ -90,7 +92,7 @@
         </div>
       </form>
   
-      <div class="panel panel-primary panel-transparent">
+      <div class="panel panel-primary panel-transparent" style="display: none;">
         <div class="panel-heading">Deterministic algorithm</div>
         <div class="panel-body">
           <div class="btn-group-vertical btn-block" >
@@ -99,7 +101,7 @@
         </div>
       </div>
   
-      <div class="panel panel-primary panel-transparent">
+      <div class="panel panel-primary panel-transparent" style="display:none">
         <div class="panel-heading"><p id="generation">Genetic algorithm</p></strong>
         </div>
         <div class="panel-body">
@@ -227,7 +229,9 @@
       
       // 2D code
       {% if view == '2D' %}
-        var map = L.map('map', { zoomControl:false }).setView([39, -98], 5);
+        var map = L.map('map', { zoomControl:false }).setView([22, -100], 5);
+
+        //var map = L.map('map', { zoomControl:false }).setView([39, -98], 5);
         var osm_layer = L.tileLayer(layers['osm']);
         map.addLayer(osm_layer);
         var current_layer = osm_layer;
