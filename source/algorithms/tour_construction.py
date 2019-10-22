@@ -122,7 +122,6 @@ class TourConstructionHeuristics(BaseAlgorithm):
         intermediate_steps = [[]]
         for point in self.format_solution(tour):
             intermediate_steps.append(intermediate_steps[-1] + [point])
-        print('TESTING')
         return intermediate_steps[2:], tour_lengths
 
     def astar(self):
