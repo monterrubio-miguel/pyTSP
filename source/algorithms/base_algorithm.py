@@ -37,6 +37,7 @@ class BaseAlgorithm():
                     distance = self.haversine_distance(cityA, cityB)
                     self.distances[cityA][cityB] = distance
                     self.distances[cityB][cityA] = distance
+        print(self.distances)
         return self.distances
 
     # add node k between node i and node j
