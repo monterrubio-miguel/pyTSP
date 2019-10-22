@@ -1,9 +1,10 @@
 from algorithms.genetic_algorithm import GeneticAlgorithm
 from algorithms.linear_programming import LinearProgramming
 from algorithms.tour_construction import TourConstructionHeuristics
+from algorithms.intsys_algorithm.py import IntSysAlgorithms
 
 
-class pyTSP(GeneticAlgorithm, LinearProgramming, TourConstructionHeuristics):
+class pyTSP(GeneticAlgorithm, LinearProgramming, TourConstructionHeuristics, IntSysAlgorithms):
 
     algorithms = (
         'nearest_neighbor',
@@ -13,5 +14,7 @@ class pyTSP(GeneticAlgorithm, LinearProgramming, TourConstructionHeuristics):
         'pairwise_exchange',
         'node_insertion',
         'edge_insertion',
-        'ILP_solver'
+        'ILP_solver',
+        'dijkstra',
+        'astar'
     )

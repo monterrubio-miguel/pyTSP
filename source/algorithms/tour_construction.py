@@ -106,3 +106,24 @@ class TourConstructionHeuristics(BaseAlgorithm):
         tour_lengths.append(tour_length)
         lengths = [sum(tour_lengths[:3])] + tour_lengths[3:]
         return [self.format_solution(step) for step in tours], lengths
+
+    def dijkstra(self):
+        city = randrange(1, self.size)
+        current, tour, tour_length, tour_lengths = city, [city], 0, []
+        while len(tour) != len(self.cities):
+            arg_min, edge_length = self.closest_neighbor(tour, current)
+            tour_length += edge_length
+            tour_lengths.append(tour_length)
+            tour.append(arg_min)
+            current = arg_min
+        # we close the tour by adding the last edge length
+        tour_length += self.distances[current][city]
+        tour_lengths.append(tour_length)
+        intermediate_steps = [[]]
+        for point in self.format_solution(tour):
+            intermediate_steps.append(intermediate_steps[-1] + [point])
+        print('TESTING')
+        return intermediate_steps[2:], tour_lengths
+
+    def astar(self):
+        return null
