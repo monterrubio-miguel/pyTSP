@@ -270,8 +270,8 @@
         {% for id, properties in cities.items() %}  
           var marker = WE.marker(
           [
-          {{ properties['latitude'] }}, 
-          {{ properties['longitude'] }}
+          { properties['latitude'] }, 
+          { properties['longitude'] }
           ],
           'static/images/city.png', 
           20, 20
