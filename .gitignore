@@ -13,3 +13,4 @@ venv
 # other
 .DS_Store
 
+jupyter/.ipynb_checkpoints/tsp-checkpoint.ipynb
